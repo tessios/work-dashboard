@@ -170,6 +170,13 @@
   .badge{font-size:11px;font-weight:700;padding:2px 7px;border-radius:6px;background:var(--line-soft);color:var(--ink-2);letter-spacing:0}
   .badge.cat{background:var(--accent-soft);color:var(--accent)}
   html[data-theme="dark"] .badge.cat{color:var(--accent)}
+  .badge[data-cat="content"]{background:var(--accent-soft);color:var(--accent)}
+  .badge[data-cat="work"]{background:#EAF0FF;color:#3C58C8}
+  .badge[data-cat="review"]{background:#FBEEE0;color:#A9661A}
+  .badge[data-cat="life"]{background:var(--done-soft);color:var(--done)}
+  html[data-theme="dark"] .badge[data-cat="work"]{background:#1B2440;color:#9DB2FF}
+  html[data-theme="dark"] .badge[data-cat="review"]{background:#2C2216;color:#E7AD6A}
+  html[data-theme="dark"] .badge[data-cat="life"]{color:var(--done)}
   .due{margin-left:auto;font-size:11.5px;font-weight:800;color:var(--sub);display:inline-flex;align-items:center;gap:4px;font-variant-numeric:tabular-nums}
   .due.urgent{color:var(--action)}
   .due.soon{color:var(--progress)}
@@ -574,8 +581,7 @@
       : "";
     return '<button class="card" type="button" data-id="' + esc(it.id) + '">'
       + '<div class="c-top">'
-      +   '<span class="badge">' + esc(it.area || "") + '</span>'
-      +   '<span class="badge cat">' + esc(CAT_LABEL[it.category] || "") + '</span>'
+      +   '<span class="badge" data-cat="' + esc(it.category || "") + '">' + esc(it.area || "") + '</span>'
       +   dueHTML
       + '</div>'
       + '<h3>' + esc(it.title) + '</h3>'
