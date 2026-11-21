@@ -678,9 +678,17 @@
     pill.textContent = STATUS[it.status].pill;
     pill.className = "status-pill " + it.status;
     $("sh-title").textContent = it.title;
-    $("sh-due").textContent = it.status === "done"
-      ? (it.done_at ? fmtFull(it.done_at) + " 완료" : "—")
-      : (it.due ? fmtFull(it.due) + (dayDiff(it.due) >= 0 ? " · D-" + dayDiff(it.due) : " · " + Math.abs(dayDiff(it.due)) + "일 지남") : "기한 없음");
+    var dueTxt;
+    if(it.status === "done"){
+      dueTxt = it.done_at ? fmtFull(it.done_at) + " 완료" : "—";
+    }else if(!it.due){
+      dueTxt = "기한 없음";
+    }else{
+      var dn = dayDiff(it.due);
+      var tail = dn === 0 ? "오늘 마감" : dn === 1 ? "내일 마감" : (dn > 0 ? "D-" + dn : Math.abs(dn) + "일 지남");
+      dueTxt = fmtFull(it.due) + " · " + tail;
+    }
+    $("sh-due").textContent = dueTxt;
     $("sh-area").textContent = it.area || "—";
     $("sh-memo").textContent = it.memo || it.summary || "메모 없음";
 
