@@ -155,6 +155,10 @@
   .group.progress .gi{background:var(--progress-soft);color:var(--progress)}
   .group.done .gi{background:var(--done-soft);color:var(--done)}
   .cards{display:grid;grid-template-columns:1fr;gap:9px}
+  .date-hd{grid-column:1/-1;display:flex;align-items:center;gap:8px;font-size:11.5px;font-weight:800;color:var(--sub);letter-spacing:0;margin:8px 2px 0}
+  .date-hd:first-child{margin-top:0}
+  .date-hd::after{content:"";flex:1;height:1px;background:var(--line)}
+  .date-hd .dc{font-size:10.5px;font-weight:800;background:var(--done-soft);color:var(--done);padding:1px 7px;border-radius:999px}
 
   .card{
     position:relative;text-align:left;padding:14px 15px 13px;border-radius:var(--r);width:100%;
@@ -589,7 +593,7 @@
     }).join("");
   }
   function cardHTML(it){
-    var di = dueInfo(it);
+    var di = it.status === "done" ? null : dueInfo(it);
     var dueHTML = di ? '<span class="due ' + di.cls + '">' + esc(di.text) + '</span>' : "";
     var nextHTML = it.next
       ? '<div class="c-next"><span class="arw">→</span><span class="t">' + esc(it.next) + '</span></div>'
@@ -607,11 +611,27 @@
   function groupHTML(status, items){
     if(!items.length) return "";
     var s = STATUS[status];
+    var inner;
+    if(status === "done"){
+      var buckets = [];
+      items.forEach(function(it){
+        var k = it.done_at || "";
+        var last = buckets[buckets.length-1];
+        if(last && last.k === k) last.items.push(it);
+        else buckets.push({k:k, items:[it]});
+      });
+      inner = buckets.map(function(b){
+        return '<div class="date-hd">' + esc(b.k ? fmtFull(b.k) : "날짜 미상") + '<span class="dc">' + b.items.length + '건</span></div>'
+          + b.items.map(cardHTML).join("");
+      }).join("");
+    }else{
+      inner = items.map(cardHTML).join("");
+    }
     return '<section class="group ' + status + '">'
       + '<div class="g-hd"><span class="gi">' + s.icon + '</span><h2>' + esc(s.label) + '</h2>'
       +   '<span class="gc">' + items.length + '</span>'
       +   '<span class="gh-hint">' + esc(s.hint) + '</span></div>'
-      + '<div class="cards">' + items.map(cardHTML).join("") + '</div>'
+      + '<div class="cards">' + inner + '</div>'
       + '</section>';
   }
   function renderList(){
