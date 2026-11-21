@@ -259,6 +259,18 @@
     .cards{grid-template-columns:1fr 1fr 1fr}
     .group.done .cards{grid-template-columns:1fr 1fr}
   }
+  @media (max-width:430px){
+    .sub-extra{display:none}
+    .hd-meta{font-size:11.5px;gap:6px}
+    .seg{gap:3px}
+    .seg button{padding:8px 7px;font-size:12px;gap:4px}
+    .seg button .c{padding:1px 5px;font-size:10.5px}
+    .stat{padding:12px 11px}
+    .stat .s-n{font-size:26px}
+    .stat .s-l{font-size:11px}
+    .chip{padding:7px 11px;font-size:12px}
+    .g-hd .gh-hint{display:none}
+  }
   @media (prefers-reduced-motion:reduce){
     *{transition:none !important;animation:none !important}
   }
@@ -273,7 +285,7 @@
       </div>
       <div class="hd-t">
         <h1>업무 대시보드</h1>
-        <p id="today-label">개인 · 업무 현황 한눈에</p>
+        <p id="today-label"><span id="date-label">오늘</span><span class="sub-extra"> · 개인·업무 현황</span></p>
       </div>
       <div class="hd-btns">
         <button class="icon-btn" id="refresh-btn" type="button" aria-label="새로고침" title="새로고침">
@@ -457,7 +469,7 @@
   /* ---------- today label ---------- */
   (function(){
     var d = new Date(), w = ["일","월","화","수","목","금","토"][d.getDay()];
-    $("today-label").textContent = d.getFullYear() + "년 " + (d.getMonth()+1) + "월 " + d.getDate() + "일 (" + w + ") · 개인·업무 현황";
+    $("date-label").textContent = d.getFullYear() + "년 " + (d.getMonth()+1) + "월 " + d.getDate() + "일 (" + w + ")";
   })();
 
   /* ---------- data load ---------- */
@@ -472,12 +484,12 @@
     if(isNaN(t)) return "업데이트 시각 확인 불가";
     var diff = Math.max(0, Date.now() - t);
     var m = Math.floor(diff/60000);
-    if(m < 1) return "방금 업데이트";
-    if(m < 60) return m + "분 전 업데이트";
+    if(m < 1) return "방금";
+    if(m < 60) return m + "분 전";
     var h = Math.floor(m/60);
-    if(h < 24) return h + "시간 전 업데이트";
+    if(h < 24) return h + "시간 전";
     var d = Math.floor(h/24);
-    if(d < 8) return d + "일 전 업데이트";
+    if(d < 8) return d + "일 전";
     return "오래된 데이터";
   }
   function readFallback(){
