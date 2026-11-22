@@ -199,6 +199,54 @@
   .group.done .card .c-next{display:none}
   .group.done .card::before{opacity:.45}
 
+  /* ---------- check · dismissed ---------- */
+  .group.dismissed .gi{background:var(--line-soft);color:var(--sub)}
+  .group.dismissed .g-hd h2{color:var(--ink-2)}
+  .group.dismissed .card{background:var(--card-2);box-shadow:none}
+  .group.dismissed .card::before{background:var(--sub);opacity:.3}
+  .group.dismissed .card h3{color:var(--sub);font-weight:600;text-decoration:line-through;text-decoration-thickness:1px;text-decoration-color:var(--line)}
+  .group.dismissed .card .c-sum{opacity:.7}
+  .group.dismissed .card .c-next{display:none}
+  .card{cursor:pointer}
+  .badge.mine{background:var(--accent-soft);color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+  .card .c-acts{display:flex;gap:7px;padding-top:9px;margin-top:1px;border-top:1px dashed var(--line)}
+  .qa{flex:1;height:34px;padding:0 8px;border-radius:10px;font-size:12px;font-weight:800;letter-spacing:-.01em;
+      display:inline-flex;align-items:center;justify-content:center;gap:4px;white-space:nowrap;transition:.15s;
+      border:1px solid var(--line);background:var(--card-2);color:var(--ink-2)}
+  .qa:hover{transform:translateY(-1px)}
+  .qa:active{transform:scale(.97)}
+  .qa.ok{background:var(--done-soft);color:var(--done);border-color:transparent}
+  .qa.no{background:var(--card);color:var(--sub)}
+  .qa.undo{background:var(--accent-soft);color:var(--accent);border-color:transparent}
+
+  /* ---------- check bar ---------- */
+  .checkbar{display:flex;align-items:center;gap:10px;margin:2px 0 8px;padding:10px 12px;
+    border-radius:14px;background:var(--accent-soft);border:1px solid transparent}
+  .checkbar[hidden]{display:none}
+  .cb-main{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}
+  .cb-t{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:800;color:var(--accent)}
+  .cb-n{font-size:10.5px;font-weight:800;background:var(--accent);color:#fff;border-radius:999px;padding:1px 7px;font-variant-numeric:tabular-nums}
+  .cb-list{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;white-space:nowrap;
+    font-size:11.5px;font-weight:600;color:var(--ink-2)}
+  .cb-list::-webkit-scrollbar{display:none}
+  .cb-i b{color:var(--accent);font-weight:800}
+  .cb-sep{color:var(--sub);opacity:.5}
+  .cb-copy{height:32px;padding:0 13px;border-radius:9px;background:var(--accent);color:#fff;
+    font-size:12px;font-weight:800;flex:none;transition:.15s}
+  .cb-copy:hover{filter:brightness(1.06)}
+  .cb-copy.done{background:var(--done)}
+
+  /* ---------- toast ---------- */
+  .toast{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom));transform:translate(-50%,16px);
+    z-index:80;display:flex;align-items:center;gap:4px;max-width:calc(100% - 28px);
+    background:var(--ink);color:var(--card);border-radius:14px;padding:10px 10px 10px 16px;
+    box-shadow:var(--shadow-lg);font-size:12.5px;font-weight:700;letter-spacing:-.01em;
+    opacity:0;pointer-events:none;transition:opacity .2s, transform .2s}
+  .toast.on{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+  .toast button{font-size:12.5px;font-weight:800;color:#B9C2FF;padding:6px 10px;border-radius:9px;background:rgba(255,255,255,.12);flex:none}
+  html[data-theme="dark"] .toast{background:#EAEEF6;color:#0D1017}
+  html[data-theme="dark"] .toast button{color:#3B4FD0;background:rgba(0,0,0,.07)}
+
   .empty{padding:56px 18px;text-align:center;color:var(--sub);font-size:13.5px;background:var(--card);border:1px dashed var(--line);border-radius:var(--r)}
   .empty b{display:block;font-size:15px;color:var(--ink-2);margin-bottom:5px}
 
@@ -222,6 +270,7 @@
   .status-pill.action{background:var(--action-soft);color:var(--action)}
   .status-pill.progress{background:var(--progress-soft);color:var(--progress)}
   .status-pill.done{background:var(--done-soft);color:var(--done)}
+  .status-pill.dismissed{background:var(--line-soft);color:var(--sub)}
   .sh-x{margin-left:auto;width:32px;height:32px;border-radius:9px;display:grid;place-items:center;color:var(--sub);background:var(--line-soft);font-size:14px}
   .sheet h2{font-size:19px;font-weight:800;letter-spacing:-.035em;line-height:1.35;margin-bottom:14px}
   .sh-facts{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:16px}
@@ -236,6 +285,9 @@
   .sh-next .cp{font-size:11.5px;font-weight:800;color:var(--accent);background:var(--card);border:1px solid var(--line);border-radius:8px;padding:5px 9px;flex:none;transition:.16s}
   .sh-next .cp:hover{transform:translateY(-1px)}
   .sh-done-next{font-size:13px;color:var(--sub);background:var(--card-2);border:1px dashed var(--line);border-radius:14px;padding:12px 14px}
+  .sh-acts{display:flex;gap:8px;flex-wrap:wrap;margin:4px 0 14px}
+  .sh-acts .qa{height:44px;font-size:13px}
+  .sh-act-note{font-size:12px;color:var(--sub);font-weight:600;line-height:1.5;padding:10px 0}
   .sh-nav{display:flex;gap:8px;margin-top:4px}
   .sh-nav button{flex:1;height:42px;border-radius:12px;background:var(--card-2);border:1px solid var(--line);font-size:12.5px;font-weight:700;color:var(--ink-2);transition:.16s}
   .sh-nav button:disabled{opacity:.4;cursor:default}
@@ -269,6 +321,8 @@
   }
   @media (max-width:430px){
     .sub-extra{display:none}
+    .cb-copy{padding:0 10px;font-size:11.5px;height:30px}
+    .qa{font-size:11.5px;padding:0 6px;gap:3px}
     .hd-meta{font-size:11.5px;gap:5px;flex-direction:column;align-items:flex-start}
     .meta-line{gap:5px}
     .seg{gap:3px}
@@ -339,11 +393,19 @@
     <div class="chips" id="chips" role="group" aria-label="카테고리 필터"></div>
   </div>
 
+  <div class="checkbar" id="checkbar" hidden>
+    <div class="cb-main">
+      <div class="cb-t">내 체크 <span class="cb-n" id="cb-n">0</span></div>
+      <div class="cb-list" id="cb-list"></div>
+    </div>
+    <button class="cb-copy" id="cb-copy" type="button">변경사항 복사</button>
+  </div>
+
   <main id="list" aria-live="polite"></main>
 
   <footer>
-    <span>업데이트는 <code>tasks.json</code> 수정 후 반영 · 이 페이지는 공개 데이터만 담습니다.</span>
-    <span id="ver-label"></span>
+    <span>업데이트는 <code>tasks.json</code> 수정 후 반영 · 공개 데이터만 담습니다</span>
+    <span>완료·필요 없음 체크는 이 브라우저에만 저장 · <span id="ver-label"></span></span>
   </footer>
 </div>
 
@@ -368,13 +430,16 @@
     <h4>다음 할 일</h4>
     <div id="sh-next-wrap"></div>
   </div>
+  <div class="sh-acts" id="sh-acts"></div>
   <div class="sh-nav">
     <button id="sh-prev" type="button">← 이전</button>
     <button id="sh-next" type="button">다음 →</button>
   </div>
 </aside>
 
-<script type="application/json" id="fallback-data">{"meta":{"version":1,"updated_at":"2026-11-22T08:30:00+09:00","updated_label":"2026-11-22 08:30","note":"공개 저장소용 일반화 데이터 · 개인정보 미포함"},"items":[{"id":"blog-inas-2026","status":"action","category":"content","area":"블로그","title":"인천아트쇼 2026 발행","summary":"부계정 임시저장 완료(사진 19장·본문). 오늘 전시 마지막 날 — 오전 발행 권장.","memo":"부계정에 사진 19장과 본문까지 임시저장된 상태. 오늘이 전시 마지막 날이라 오전 중 발행하는 편이 좋다. 남은 일은 태그 입력과 발행 버튼뿐.","next":"태그만 입력하고 오늘 오전 중 발행","due":"2026-11-22","priority":1},{"id":"blog-samasti","status":"action","category":"content","area":"블로그","title":"사마스티 테아닌 호지샷 발행","summary":"본계정 임시저장 완료(사진 15장). 마감 11/28 · 발행 시 태그·공정위 배너 필요.","memo":"본계정에 사진 15장으로 임시저장 완료. 발행할 때 태그를 넣고 공정위 문구 배너를 붙여야 한다. 마감은 11/28.","next":"태그·공정위 배너 넣고 발행 (11/28까지)","due":"2026-11-28","priority":2},{"id":"blog-hairbrush","status":"action","category":"content","area":"블로그","title":"탈모 전자 빗 임시저장 대기","summary":"원고와 자체 도식 2장 완료. 원격 임시저장 실행 승인만 남음.","memo":"원고와 자체 제작 도식 2장이 완성되어 있다. 집 PC의 원격 브라우저로 임시저장을 실행할지 승인만 기다리는 단계.","next":"원격 임시저장 실행 승인","due":null,"priority":1},{"id":"blog-daiso-advent","status":"action","category":"content","area":"블로그","title":"다이소 어드벤트 5종 글 제작","summary":"매장 사진을 받으면 국·영문 복붙용 메일 제작 착수.","memo":"5종 팩트체크는 끝났고, 매장에서 찍은 실제 사진을 받은 뒤 국·영문 복붙용 메일로 제작한다. 사진 없이는 시작하지 않는다.","next":"주말 매장 사진 전달","due":null,"priority":2},{"id":"life-toss-prime","status":"action","category":"life","area":"생활","title":"토스프라임 마감 — 해지/유지 결정","summary":"오늘 마감. 갱신 전에 해지할지 유지할지 정해야 함.","memo":"오늘 자정이 마감이다. 무료 체험에서 유료로 넘어가기 전에 해지 여부를 정해야 한다. 유지하면 결제가 이어진다.","next":"해지 또는 유지 선택","due":"2026-11-22","priority":1},{"id":"novel-bible-title","status":"action","category":"content","area":"웹소설","title":"1부 바이블 v2 제목 확정","summary":"16권 바이블 완성. 제목만 정하면 1~3화 집필 시작.","memo":"15금 16권 분량의 1부 바이블이 완성되어 있다. 제목 후보 중 하나를 확정하면 1~3화 집필에 바로 들어간다.","next":"제목 확정","due":null,"priority":2},{"id":"review-coupang-2","status":"action","category":"review","area":"쿠팡","title":"어제 배송 2건 리뷰 (두유·화장지)","summary":"사진만 오면 바로 등록 가능.","memo":"어제 도착한 두유와 화장지 두 건. 리뷰 내용은 준비되어 있어 제품 사진만 받으면 바로 등록한다.","next":"제품 사진 전달","due":null,"priority":2},{"id":"work-api570","status":"action","category":"work","area":"업무","title":"API 570 갱신 접수 여부 결정","summary":"12/31 자격 만료. 대행 접수로 진행할지 정해야 함.","memo":"API 570 자격이 12/31에 만료된다. 갱신은 대행 접수로 진행할 수 있고, 접수 시기와 비용을 정하면 이후는 맡겨도 된다.","next":"대행 접수 여부 결정 (12/31 만료)","due":"2026-12-31","priority":1},{"id":"review-glicentin","status":"action","category":"review","area":"체험단","title":"리뷰노트 글리센정 선정 여부 확인","summary":"카톡 선정 안내와 플랫폼 미선정 표시가 상충. 11/18 문의 후 회신 없음.","memo":"카카오톡으로는 선정됐다고 안내가 왔는데 플랫폼에는 미선정으로 표시되어 있다. 11/18 문의했지만 아직 회신이 없다. 선정이면 제품이 오고, 아니면 리뷰 일정에서 빼면 된다.","next":"플랫폼에 재문의 또는 안내 확인","due":null,"priority":3},{"id":"trip-audit","status":"progress","category":"work","area":"출장","title":"합동보증감사 출장 (11/25~27)","summary":"숙소 결제 완료(11/24까지 무료취소). 화요일(11/24) 출발.","memo":"11/25~27 합동보증감사 출장. 숙소는 결제까지 끝났고 11/24까지 무료취소가 가능하다. 출발은 화요일 11/24.","next":"11/24 출발 준비 · 무료취소 기한 확인","due":"2026-11-25","priority":1},{"id":"review-pipeline","status":"progress","category":"review","area":"체험단","title":"무신사 22건 · 리뷰노트 22건 · 카카오 4건 대기","summary":"발표 일정을 순차 확인 중. 당첨 시 제품 수령 후 리뷰.","memo":"세 플랫폼에 총 48건이 심사 중이다. 발표가 순차적으로 나오므로 알림을 확인하고, 당첨된 건부터 제품 수령 뒤 리뷰로 넘긴다.","next":"발표 알림 순차 확인","due":null,"priority":3},{"id":"money-agoda","status":"progress","category":"life","area":"수익화","title":"Agoda Global 제휴 심사 대기","summary":"11/24 10:00 재확인 예약됨.","memo":"제휴 신청이 심사 중이고 11/24 10:00에 재확인하도록 예약되어 있다. 승인되면 링크를 블로그 숙소 글에 붙인다.","next":"11/24 10:00 심사 결과 확인","due":"2026-11-24","priority":2},{"id":"money-adpost","status":"progress","category":"life","area":"수익화","title":"네이버 애드포스트 12월 재신청","summary":"12/1 10:00 재신청 예약됨.","memo":"이번 달 조건 미달로 12월 1일 10:00에 재신청하도록 예약되어 있다. 그날 신청만 하면 된다.","next":"12/1 10:00 재신청","due":"2026-12-01","priority":3},{"id":"life-starbucks","status":"progress","category":"life","area":"생활","title":"스타벅스 골드카드 환불 재확인","summary":"11/23(월) 15:00 재확인 예약됨.","memo":"환불 처리 결과 확인이 11/23 15:00으로 예약되어 있다. 입금이 확인되면 종료.","next":"11/23 15:00 환불 확인","due":"2026-11-23","priority":2},{"id":"event-ai-lab","status":"progress","category":"life","area":"이벤트","title":"모두의 AI 실험실 포인트 소진","summary":"잔여 17,628P. 매일 15:00 자동 소진 중.","memo":"이벤트 포인트가 17,628P 남았고 매일 15:00에 자동으로 소진된다. 소진이 끝나면 종료 항목으로 옮긴다.","next":"매일 15:00 자동 소진 확인","due":null,"priority":3},{"id":"content-webtoon","status":"progress","category":"content","area":"웹툰·이모티콘","title":"이모티콘 24컷 · 웹툰 「3밀리」 1부 v6.1","summary":"등록·피드백 대기 중.","memo":"가족 캐릭터 이모티콘 24컷과 웹툰 「3밀리」 1부 v6.1이 등록·피드백 대기 상태다. 피드백이 오면 그 부분만 고친다.","next":"등록 결과·피드백 확인","due":null,"priority":3},{"id":"done-omokgol","status":"done","category":"content","area":"블로그","title":"오목골 즉석메밀우동 글 발행","summary":"티스토리 발행 완료. 대문 교체·얼굴 마스킹까지 반영.","memo":"매장 사진을 정리하고 인물 얼굴을 가린 뒤 대문까지 새로 만들어 발행을 마쳤다.","next":null,"due":null,"done_at":"2026-11-21","priority":3},{"id":"done-nuclear-qa","status":"done","category":"content","area":"블로그","title":"원자력 QA 1·2편 티스토리 발행","summary":"국·영문 원고 정리 후 2편까지 발행 완료.","memo":"비유 중심으로 다시 쓴 원자력 QA 연재 1편과 2편을 티스토리에 발행했다.","next":null,"due":null,"done_at":"2026-11-20","priority":3},{"id":"done-tistory-4","status":"done","category":"content","area":"블로그","title":"인천아트쇼·오목골 티스토리 4편 발행","summary":"전시·맛집 묶음 4편을 한 번에 발행 완료.","memo":"인천아트쇼와 오목골 소재로 만든 4편을 티스토리에 올렸다. 홈주제는 여행으로 지정.","next":null,"due":null,"done_at":"2026-11-21","priority":3},{"id":"done-coupang-reviews","status":"done","category":"review","area":"쿠팡","title":"모토스탠스 T501 · 리안 거치대 리뷰 완료","summary":"쿠팡 리뷰 2건 등록. 누적 15,318점.","memo":"두 제품의 포토리뷰를 등록했고 리뷰 점수가 누적 15,318점이 되었다.","next":null,"due":null,"done_at":"2026-11-21","priority":3},{"id":"done-campaigns","status":"done","category":"review","area":"체험단","title":"무신사 8건 · 리뷰노트 6건 · 설문 4건 완료","summary":"체험단 리뷰와 공공기관 설문까지 마감.","memo":"무신사 8건, 리뷰노트 6건, 공공기관 설문 4건을 모두 마감했다.","next":null,"due":null,"done_at":"2026-11-21","priority":3},{"id":"done-wps","status":"done","category":"work","area":"강의","title":"WPS 웹앱 6차 · TIG 21장 교안 · 오프닝 영상 2종","summary":"강의 자료 마무리와 드라이브 5폴더 정리까지 완료.","memo":"WPS 실습 웹앱 6차 수정, TIG 배관용접 21장 교안, 오프닝 영상 2종을 마쳤고 강의 자료 드라이브를 5개 폴더로 정리했다.","next":null,"due":null,"done_at":"2026-11-19","priority":3}]}</script>
+<div class="toast" id="toast" role="status" aria-live="polite"><span id="toast-msg"></span><button type="button" id="toast-undo">되돌리기</button></div>
+
+<script type="application/json" id="fallback-data">{"meta":{"version":2,"updated_at":"2026-11-22T09:03:00+09:00","updated_label":"2026-11-22 09:03","note":"공개 저장소용 일반화 데이터 · 개인정보 미포함"},"items":[{"id":"blog-inas-2026","status":"action","category":"content","area":"블로그","title":"인천아트쇼 2026 발행","summary":"부계정 임시저장 완료(사진 19장·본문). 오늘 전시 마지막 날 — 오전 발행 권장.","memo":"부계정에 사진 19장과 본문까지 임시저장된 상태. 오늘이 전시 마지막 날이라 오전 중 발행하는 편이 좋다. 남은 일은 태그 입력과 발행 버튼뿐.","next":"태그만 입력하고 오늘 오전 중 발행","due":"2026-11-22","priority":1},{"id":"blog-samasti","status":"done","category":"content","area":"블로그","title":"사마스티 테아닌 호지샷 발행","summary":"본계정 발행 완료. 사진 15장·태그·공정위 배너까지 반영.","memo":"본계정에 사진 15장과 본문을 올리고 태그와 공정위 문구 배너까지 넣어 발행을 마쳤다. 마감은 11/28이었다.","next":null,"due":null,"done_at":"2026-11-22","priority":2},{"id":"blog-hairbrush","status":"action","category":"content","area":"블로그","title":"탈모 전자 빗 임시저장 대기","summary":"원고와 자체 도식 2장 완료. 원격 임시저장 실행 승인만 남음.","memo":"원고와 자체 제작 도식 2장이 완성되어 있다. 집 PC의 원격 브라우저로 임시저장을 실행할지 승인만 기다리는 단계.","next":"원격 임시저장 실행 승인","due":null,"priority":1},{"id":"blog-daiso-advent","status":"action","category":"content","area":"블로그","title":"다이소 어드벤트 5종 글 제작","summary":"매장 사진을 받으면 국·영문 복붙용 메일 제작 착수.","memo":"5종 팩트체크는 끝났고, 매장에서 찍은 실제 사진을 받은 뒤 국·영문 복붙용 메일로 제작한다. 사진 없이는 시작하지 않는다.","next":"주말 매장 사진 전달","due":null,"priority":2},{"id":"life-toss-prime","status":"action","category":"life","area":"생활","title":"토스프라임 마감 — 해지/유지 결정","summary":"오늘 마감. 갱신 전에 해지할지 유지할지 정해야 함.","memo":"오늘 자정이 마감이다. 무료 체험에서 유료로 넘어가기 전에 해지 여부를 정해야 한다. 유지하면 결제가 이어진다.","next":"해지 또는 유지 선택","due":"2026-11-22","priority":1},{"id":"novel-bible-title","status":"action","category":"content","area":"웹소설","title":"1부 바이블 v2 제목 확정","summary":"16권 바이블 완성. 제목만 정하면 1~3화 집필 시작.","memo":"15금 16권 분량의 1부 바이블이 완성되어 있다. 제목 후보 중 하나를 확정하면 1~3화 집필에 바로 들어간다.","next":"제목 확정","due":null,"priority":2},{"id":"review-coupang-2","status":"action","category":"review","area":"쿠팡","title":"어제 배송 2건 리뷰 (두유·화장지)","summary":"사진만 오면 바로 등록 가능.","memo":"어제 도착한 두유와 화장지 두 건. 리뷰 내용은 준비되어 있어 제품 사진만 받으면 바로 등록한다.","next":"제품 사진 전달","due":null,"priority":2},{"id":"work-api570","status":"action","category":"work","area":"업무","title":"API 570 갱신 접수 여부 결정","summary":"12/31 자격 만료. 대행 접수로 진행할지 정해야 함.","memo":"API 570 자격이 12/31에 만료된다. 갱신은 대행 접수로 진행할 수 있고, 접수 시기와 비용을 정하면 이후는 맡겨도 된다.","next":"대행 접수 여부 결정 (12/31 만료)","due":"2026-12-31","priority":1},{"id":"review-glicentin","status":"action","category":"review","area":"체험단","title":"리뷰노트 글리센정 선정 여부 확인","summary":"카톡 선정 안내와 플랫폼 미선정 표시가 상충. 11/18 문의 후 회신 없음.","memo":"카카오톡으로는 선정됐다고 안내가 왔는데 플랫폼에는 미선정으로 표시되어 있다. 11/18 문의했지만 아직 회신이 없다. 선정이면 제품이 오고, 아니면 리뷰 일정에서 빼면 된다.","next":"플랫폼에 재문의 또는 안내 확인","due":null,"priority":3},{"id":"trip-audit","status":"progress","category":"work","area":"출장","title":"합동보증감사 출장 (11/25~27)","summary":"숙소 결제 완료(11/24까지 무료취소). 화요일(11/24) 출발.","memo":"11/25~27 합동보증감사 출장. 숙소는 결제까지 끝났고 11/24까지 무료취소가 가능하다. 출발은 화요일 11/24.","next":"11/24 출발 준비 · 무료취소 기한 확인","due":"2026-11-25","priority":1},{"id":"review-pipeline","status":"progress","category":"review","area":"체험단","title":"무신사 22건 · 리뷰노트 22건 · 카카오 4건 대기","summary":"발표 일정을 순차 확인 중. 당첨 시 제품 수령 후 리뷰.","memo":"세 플랫폼에 총 48건이 심사 중이다. 발표가 순차적으로 나오므로 알림을 확인하고, 당첨된 건부터 제품 수령 뒤 리뷰로 넘긴다.","next":"발표 알림 순차 확인","due":null,"priority":3},{"id":"money-agoda","status":"progress","category":"life","area":"수익화","title":"Agoda Global 제휴 심사 대기","summary":"11/24 10:00 재확인 예약됨.","memo":"제휴 신청이 심사 중이고 11/24 10:00에 재확인하도록 예약되어 있다. 승인되면 링크를 블로그 숙소 글에 붙인다.","next":"11/24 10:00 심사 결과 확인","due":"2026-11-24","priority":2},{"id":"money-adpost","status":"progress","category":"life","area":"수익화","title":"네이버 애드포스트 12월 재신청","summary":"12/1 10:00 재신청 예약됨.","memo":"이번 달 조건 미달로 12월 1일 10:00에 재신청하도록 예약되어 있다. 그날 신청만 하면 된다.","next":"12/1 10:00 재신청","due":"2026-12-01","priority":3},{"id":"life-starbucks","status":"progress","category":"life","area":"생활","title":"스타벅스 골드카드 환불 재확인","summary":"11/23(월) 15:00 재확인 예약됨.","memo":"환불 처리 결과 확인이 11/23 15:00으로 예약되어 있다. 입금이 확인되면 종료.","next":"11/23 15:00 환불 확인","due":"2026-11-23","priority":2},{"id":"event-ai-lab","status":"progress","category":"life","area":"이벤트","title":"모두의 AI 실험실 포인트 소진","summary":"잔여 17,628P. 매일 15:00 자동 소진 중.","memo":"이벤트 포인트가 17,628P 남았고 매일 15:00에 자동으로 소진된다. 소진이 끝나면 종료 항목으로 옮긴다.","next":"매일 15:00 자동 소진 확인","due":null,"priority":3},{"id":"content-webtoon","status":"progress","category":"content","area":"웹툰·이모티콘","title":"이모티콘 24컷 · 웹툰 「3밀리」 1부 v6.1","summary":"등록·피드백 대기 중.","memo":"가족 캐릭터 이모티콘 24컷과 웹툰 「3밀리」 1부 v6.1이 등록·피드백 대기 상태다. 피드백이 오면 그 부분만 고친다.","next":"등록 결과·피드백 확인","due":null,"priority":3},{"id":"done-omokgol","status":"done","category":"content","area":"블로그","title":"오목골 즉석메밀우동 글 발행","summary":"티스토리 발행 완료. 대문 교체·얼굴 마스킹까지 반영.","memo":"매장 사진을 정리하고 인물 얼굴을 가린 뒤 대문까지 새로 만들어 발행을 마쳤다.","next":null,"due":null,"done_at":"2026-11-21","priority":3},{"id":"done-nuclear-qa","status":"done","category":"content","area":"블로그","title":"원자력 QA 1·2편 티스토리 발행","summary":"국·영문 원고 정리 후 2편까지 발행 완료.","memo":"비유 중심으로 다시 쓴 원자력 QA 연재 1편과 2편을 티스토리에 발행했다.","next":null,"due":null,"done_at":"2026-11-20","priority":3},{"id":"done-tistory-4","status":"done","category":"content","area":"블로그","title":"인천아트쇼·오목골 티스토리 4편 발행","summary":"전시·맛집 묶음 4편을 한 번에 발행 완료.","memo":"인천아트쇼와 오목골 소재로 만든 4편을 티스토리에 올렸다. 홈주제는 여행으로 지정.","next":null,"due":null,"done_at":"2026-11-21","priority":3},{"id":"done-coupang-reviews","status":"done","category":"review","area":"쿠팡","title":"모토스탠스 T501 · 리안 거치대 리뷰 완료","summary":"쿠팡 리뷰 2건 등록. 누적 15,318점.","memo":"두 제품의 포토리뷰를 등록했고 리뷰 점수가 누적 15,318점이 되었다.","next":null,"due":null,"done_at":"2026-11-21","priority":3},{"id":"done-campaigns","status":"done","category":"review","area":"체험단","title":"무신사 8건 · 리뷰노트 6건 · 설문 4건 완료","summary":"체험단 리뷰와 공공기관 설문까지 마감.","memo":"무신사 8건, 리뷰노트 6건, 공공기관 설문 4건을 모두 마감했다.","next":null,"due":null,"done_at":"2026-11-21","priority":3},{"id":"done-wps","status":"done","category":"work","area":"강의","title":"WPS 웹앱 6차 · TIG 21장 교안 · 오프닝 영상 2종","summary":"강의 자료 마무리와 드라이브 5폴더 정리까지 완료.","memo":"WPS 실습 웹앱 6차 수정, TIG 배관용접 21장 교안, 오프닝 영상 2종을 마쳤고 강의 자료 드라이브를 5개 폴더로 정리했다.","next":null,"due":null,"done_at":"2026-11-19","priority":3}]}</script>
 <script>
 (function(){
   "use strict";
@@ -382,8 +447,10 @@
   var STATUS = {
     action:  {label:"액션 필요", pill:"액션 필요", icon:"!", hint:"직접 결정·발행·전달이 필요한 일"},
     progress:{label:"하는 중",   pill:"하는 중",   icon:"…", hint:"응답·승인·예약일을 기다리는 일"},
-    done:    {label:"완료",      pill:"완료",      icon:"✓", hint:"최근 완료한 주요 성과"}
+    done:    {label:"완료",      pill:"완료",      icon:"✓", hint:"최근 완료한 주요 성과"},
+    dismissed:{label:"필요 없음", pill:"필요 없음", icon:"✕", hint:"내가 필요 없다고 표시한 일 · 되돌리기 가능"}
   };
+  var ORDER = ["action","progress","done","dismissed"];
   var CATS = [
     {key:"all",     label:"전체"},
     {key:"content", label:"블로그·콘텐츠"},
@@ -395,6 +462,7 @@
 
   var state = {status:"all", cat:"all", q:"", openId:null, view:[]};
   var DATA = {meta:{}, items:[]};
+  var RAW = [];
 
   var $ = function(id){ return document.getElementById(id); };
   var listEl = $("list"), segEl = $("seg"), chipsEl = $("chips"),
@@ -504,9 +572,11 @@
   }
   function applyData(obj, offline){
     DATA = obj && obj.items ? obj : {meta:{}, items:[]};
-    DATA.items = DATA.items.map(function(it, i){
+    RAW = DATA.items.map(function(it, i){
       return Object.assign({id:"item-" + i}, it);
     });
+    pruneOV();
+    materialize();
     var meta = DATA.meta || {};
     $("upd-label").textContent = meta.updated_label || fmtMD(meta.updated_at) || "—";
     $("upd-age").textContent = ageText(meta.updated_at);
@@ -535,8 +605,8 @@
   }
 
   /* ---------- filters ---------- */
-  function counts(ignoreStatus){
-    var c = {action:0, progress:0, done:0};
+  function counts(){
+    var c = {action:0, progress:0, done:0, dismissed:0};
     DATA.items.forEach(function(it){ if(c[it.status] !== undefined) c[it.status]++; });
     return c;
   }
@@ -556,6 +626,9 @@
     return items.slice().sort(function(a,b){
       if(status === "done"){
         return String(b.done_at||"").localeCompare(String(a.done_at||""));
+      }
+      if(status === "dismissed"){
+        return String((b._override&&b._override.at)||"").localeCompare(String((a._override&&a._override.at)||""));
       }
       var da = dueSort(a), db = dueSort(b);
       if(da !== db) return da - db;
@@ -577,7 +650,7 @@
   function renderSeg(){
     var c = counts();
     var tabs = [{key:"all", label:"전체", n: DATA.items.length}].concat(
-      ["action","progress","done"].map(function(k){ return {key:k, label:STATUS[k].label, n:c[k]}; })
+      ORDER.map(function(k){ return {key:k, label:STATUS[k].label, n:c[k]}; })
     );
     segEl.innerHTML = tabs.map(function(t){
       return '<button type="button" data-status="' + t.key + '" aria-pressed="' + (state.status===t.key) + '">'
@@ -593,20 +666,34 @@
     }).join("");
   }
   function cardHTML(it){
-    var di = it.status === "done" ? null : dueInfo(it);
+    var di = (it.status === "done" || it.status === "dismissed") ? null : dueInfo(it);
     var dueHTML = di ? '<span class="due ' + di.cls + '">' + esc(di.text) + '</span>' : "";
     var nextHTML = it.next
       ? '<div class="c-next"><span class="arw">→</span><span class="t">' + esc(it.next) + '</span></div>'
       : "";
-    return '<button class="card" type="button" data-id="' + esc(it.id) + '">'
+    var mineHTML = it._override ? '<span class="badge mine">내 체크</span>' : "";
+    var acts = "";
+    if(it.status === "action" || it.status === "progress"){
+      acts = '<div class="c-acts">'
+        + '<button class="qa ok" type="button" data-act="done" data-id="' + esc(it.id) + '">✅ 완료</button>'
+        + '<button class="qa no" type="button" data-act="dismiss" data-id="' + esc(it.id) + '">🚫 필요 없음</button>'
+        + '</div>';
+    }else if(it._override){
+      acts = '<div class="c-acts">'
+        + '<button class="qa undo" type="button" data-act="undo" data-id="' + esc(it.id) + '">↩️ 되돌리기</button>'
+        + '</div>';
+    }
+    return '<div class="card" role="button" tabindex="0" data-id="' + esc(it.id) + '">'
       + '<div class="c-top">'
       +   '<span class="badge" data-cat="' + esc(it.category || "") + '">' + esc(it.area || "") + '</span>'
+      +   mineHTML
       +   dueHTML
       + '</div>'
       + '<h3>' + esc(it.title) + '</h3>'
       + '<p class="c-sum">' + esc(it.summary || "") + '</p>'
       + nextHTML
-      + '</button>';
+      + acts
+      + '</div>';
   }
   function groupHTML(status, items){
     if(!items.length) return "";
@@ -638,7 +725,7 @@
     var items = visibleItems();
     var html = "";
     if(state.status === "all"){
-      ["action","progress","done"].forEach(function(k){
+      ORDER.forEach(function(k){
         html += groupHTML(k, sortGroup(items.filter(function(it){ return it.status === k; }), k));
       });
     }else{
@@ -654,7 +741,7 @@
     state.view = items;
   }
   function renderAll(){
-    renderStats(); renderSeg(); renderChips(); renderList();
+    renderStats(); renderSeg(); renderChips(); renderList(); renderCheckbar();
   }
   function setStatus(k){
     state.status = k;
@@ -665,6 +752,156 @@
     state.cat = k;
     renderChips(); renderList();
   }
+
+  /* ---------- 사용자 체크 (완료 · 필요 없음) ---------- */
+  var OV_KEY = "work_dashboard_overrides_v1";
+  var OV = {v:1, items:{}};
+  var lastAction = null;
+  var toastTimer = null;
+
+  function loadOV(){
+    try{
+      var raw = localStorage.getItem(OV_KEY);
+      if(!raw) return;
+      var p = JSON.parse(raw);
+      if(p && p.items && typeof p.items === "object") OV = {v:1, items:p.items};
+    }catch(e){}
+  }
+  function saveOV(){
+    try{ localStorage.setItem(OV_KEY, JSON.stringify(OV)); }catch(e){}
+  }
+  function todayStr(){
+    var d = new Date();
+    return d.getFullYear() + "-" + pad(d.getMonth()+1) + "-" + pad(d.getDate());
+  }
+  function isoNow(){
+    var d = new Date(), off = -d.getTimezoneOffset(), a = Math.abs(off);
+    return d.getFullYear() + "-" + pad(d.getMonth()+1) + "-" + pad(d.getDate())
+      + "T" + pad(d.getHours()) + ":" + pad(d.getMinutes()) + ":" + pad(d.getSeconds())
+      + (off >= 0 ? "+" : "-") + pad(Math.floor(a/60)) + ":" + pad(a%60);
+  }
+  function rawItem(id){
+    for(var i=0;i<RAW.length;i++){ if(RAW[i].id === id) return RAW[i]; }
+    return null;
+  }
+  function ovLabel(st){
+    if(st === "done") return "완료";
+    if(st === "dismissed") return "필요 없음";
+    return st || "";
+  }
+  /* 새 tasks.json 이 오면(updated_at 갱신) 또는 서버 상태가 이미 바뀌었으면 내 체크는 자동 정리 */
+  function pruneOV(){
+    var changed = false;
+    var upd = (DATA.meta && DATA.meta.updated_at) ? new Date(DATA.meta.updated_at).getTime() : 0;
+    Object.keys(OV.items).forEach(function(id){
+      var o = OV.items[id] || {};
+      var it = rawItem(id);
+      var at = o.at ? new Date(o.at).getTime() : 0;
+      var stale = !it
+        || it.status === o.status
+        || (o.base && it.status !== o.base)
+        || (upd && at && at < upd);
+      if(stale){ delete OV.items[id]; changed = true; }
+    });
+    if(changed) saveOV();
+  }
+  function materialize(){
+    DATA.items = RAW.map(function(src){
+      var it = {};
+      for(var k in src) if(Object.prototype.hasOwnProperty.call(src,k)) it[k] = src[k];
+      it._base = src.status;
+      var o = OV.items[it.id];
+      if(o && o.status && o.status !== src.status){
+        it.status = o.status;
+        it._override = o;
+        if(o.status === "done") it.done_at = o.at ? String(o.at).slice(0,10) : todayStr();
+      }
+      return it;
+    });
+  }
+  function applyOverride(id, act){
+    var it = rawItem(id);
+    if(!it) return;
+    lastAction = {id:id, prev: OV.items[id] ? JSON.parse(JSON.stringify(OV.items[id])) : null};
+    if(act === "undo"){
+      delete OV.items[id];
+    }else{
+      OV.items[id] = {status: act === "done" ? "done" : "dismissed", at: isoNow(), base: it.status};
+    }
+    saveOV(); materialize(); renderAll();
+    if(act === "undo"){
+      showToast("원래 상태로 되돌렸습니다", null);
+    }else{
+      showToast(act === "done" ? "완료로 옮겼습니다" : "필요 없음으로 정리했습니다", undoLast);
+    }
+  }
+  function undoLast(){
+    if(!lastAction) return;
+    if(lastAction.prev) OV.items[lastAction.id] = lastAction.prev;
+    else delete OV.items[lastAction.id];
+    saveOV(); materialize(); renderAll();
+    showToast("되돌렸습니다", null);
+  }
+  function renderCheckbar(){
+    var bar = $("checkbar");
+    var ids = Object.keys(OV.items).filter(function(id){ return !!rawItem(id); });
+    if(!ids.length){ bar.hidden = true; $("cb-list").innerHTML = ""; $("cb-n").textContent = "0"; return; }
+    bar.hidden = false;
+    $("cb-n").textContent = ids.length;
+    $("cb-list").innerHTML = ids.map(function(id){
+      return '<span class="cb-i">' + esc(rawItem(id).title) + ' <b>' + esc(ovLabel(OV.items[id].status)) + '</b></span>';
+    }).join('<span class="cb-sep">·</span>');
+  }
+  function checkText(){
+    return Object.keys(OV.items).filter(function(id){ return !!rawItem(id); }).map(function(id){
+      return "[대시보드 체크] - " + rawItem(id).title + ": " + ovLabel(OV.items[id].status) + " (" + id + ")";
+    }).join("\n");
+  }
+  function copyText(txt, btn, doneLabel){
+    var ok = function(){
+      if(!btn) return;
+      var old = btn.textContent;
+      btn.textContent = doneLabel || "복사됨 ✓";
+      btn.classList.add("done");
+      setTimeout(function(){ btn.textContent = old; btn.classList.remove("done"); }, 1600);
+    };
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(txt).then(ok, function(){});
+    }else{
+      var ta = document.createElement("textarea");
+      ta.value = txt; document.body.appendChild(ta); ta.select();
+      try{ document.execCommand("copy"); ok(); }catch(e){}
+      document.body.removeChild(ta);
+    }
+  }
+  function showToast(msg, undoFn){
+    var t = $("toast");
+    $("toast-msg").textContent = msg;
+    $("toast-undo").style.display = undoFn ? "" : "none";
+    t._undo = undoFn || null;
+    t.classList.add("on");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ t.classList.remove("on"); }, undoFn ? 5200 : 3200);
+  }
+  $("toast-undo").addEventListener("click", function(){
+    var t = $("toast");
+    t.classList.remove("on");
+    clearTimeout(toastTimer);
+    if(t._undo) t._undo();
+  });
+  $("cb-copy").addEventListener("click", function(){
+    var txt = checkText();
+    if(!txt) return;
+    copyText(txt, this, "복사됨 ✓");
+  });
+  $("sh-acts").addEventListener("click", function(e){
+    var b = e.target.closest("button[data-act]");
+    if(!b) return;
+    var id = b.dataset.id, act = b.dataset.act;
+    closeSheet();
+    applyOverride(id, act);
+  });
+  loadOV();
 
   /* ---------- events ---------- */
   segEl.addEventListener("click", function(e){
@@ -696,8 +933,17 @@
       qEl.value = ""; searchWrap.classList.remove("has-value");
       renderAll(); return;
     }
+    var qa = e.target.closest("button[data-act]");
+    if(qa){ e.stopPropagation(); applyOverride(qa.dataset.id, qa.dataset.act); return; }
     var card = e.target.closest(".card");
     if(card) openSheet(card.dataset.id);
+  });
+  listEl.addEventListener("keydown", function(e){
+    if(e.key !== "Enter" && e.key !== " " && e.key !== "Spacebar") return;
+    var card = e.target.closest(".card");
+    if(!card || e.target.closest("button")) return;
+    e.preventDefault();
+    openSheet(card.dataset.id);
   });
 
   /* ---------- sheet ---------- */
@@ -715,7 +961,9 @@
     $("sh-title").textContent = it.title;
     var dueTxt;
     if(it.status === "done"){
-      dueTxt = it.done_at ? fmtFull(it.done_at) + " 완료" : "—";
+      dueTxt = it.done_at ? fmtFull(it.done_at) + " 완료" : (it._override ? "오늘 완료로 표시" : "—");
+    }else if(it.status === "dismissed"){
+      dueTxt = it.due ? fmtFull(it.due) + " · 표시 안 함" : "표시 안 함";
     }else if(!it.due){
       dueTxt = "기한 없음";
     }else{
@@ -728,7 +976,9 @@
     $("sh-memo").textContent = it.memo || it.summary || "메모 없음";
 
     var nw = $("sh-next-wrap");
-    if(it.next){
+    if(it.status === "dismissed"){
+      nw.innerHTML = '<div class="sh-done-next">필요 없음으로 표시한 항목입니다. 아래 되돌리기로 원래 상태로 돌릴 수 있습니다.</div>';
+    }else if(it.next){
       nw.innerHTML = '<div class="sh-next"><p>' + esc(it.next) + '</p><button class="cp" type="button" id="copy-next">복사</button></div>';
       var cp = $("copy-next");
       cp.addEventListener("click", function(){
@@ -747,6 +997,8 @@
       nw.innerHTML = '<div class="sh-done-next">완료된 항목입니다. 할 일이 남아 있지 않습니다.</div>';
     }
 
+    renderSheetActs(it);
+
     var idx = state.view.findIndex(function(x){ return x.id === id; });
     $("sh-prev").disabled = idx <= 0;
     $("sh-next").disabled = idx < 0 || idx >= state.view.length - 1;
@@ -758,6 +1010,19 @@
     document.body.style.overflow = "hidden";
     sheet.scrollTop = 0;
     $("sh-close").focus();
+  }
+  function renderSheetActs(it){
+    var el = $("sh-acts"), h = "";
+    if(it.status === "action" || it.status === "progress"){
+      h = '<button class="qa ok" type="button" data-act="done" data-id="' + esc(it.id) + '">✅ 완료</button>'
+        + '<button class="qa no" type="button" data-act="dismiss" data-id="' + esc(it.id) + '">🚫 필요 없음</button>';
+    }else if(it._override){
+      h = '<button class="qa undo" type="button" data-act="undo" data-id="' + esc(it.id) + '">↩️ 되돌리기</button>'
+        + '<span class="sh-act-note">내가 직접 체크한 항목 · 원래 상태 ' + esc(STATUS[it._base] ? STATUS[it._base].label : it._base) + '</span>';
+    }else{
+      h = '<span class="sh-act-note">서버에서 이미 완료된 항목입니다.</span>';
+    }
+    el.innerHTML = h;
   }
   function closeSheet(){
     sheet.classList.remove("on"); scrim.classList.remove("on");
